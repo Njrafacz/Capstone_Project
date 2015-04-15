@@ -11,8 +11,6 @@ import java.awt.*;
 public class BoardViewer
 {
     /** description of instance variable x (add comment for each instance variable) */
-    private final int WIDTH = 1000;
-    private final int HEIGHT = 1000;
     
     private JButton randomColors;
     private JLabel titleLabel;
@@ -22,21 +20,16 @@ public class BoardViewer
     /**
      * Default constructor for objects of class BoardViewer
      */
-    public BoardViewer()
+    public static void main(String[] args)
     {
         // initialise instance variables
-        titleLabel = new JLabel("Chess Board");
-        tools.add(titleLabel);
-        panel = new JPanel();
-        panel.add(tools);
-        ChessBoard board = new ChessBoard(100,100, 50,50);
-        panel.add(board);
-        
-        frame = new JFrame();
+        JFrame frame = new JFrame();
+        frame.setSize(1000, 1000);
         frame.setTitle("Chess Program");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(WIDTH, HEIGHT);
-        frame.add(panel);
+        BoardPanel board = new BoardPanel();
+        JPanel panel = new JPanel();
+        panel.add(board);
         frame.setVisible(true);
     }
 

@@ -9,39 +9,27 @@ import java.awt.Color;
  * @NRafacz 
  * @4-14-15
  */
-public class ChessBoard extends JPanel
+public class ChessBoard
 {
     /** description of instance variable x (add comment for each instance variable) */
     private final int NUM_ROWS = 8;
     private final int NUM_COLS = 8;
-    private int num_Squares = NUM_ROWS *NUM_COLS;
+
     private int x;
     private int y;
     private int width;
     private int height;
+
     /**
      * Default constructor for objects of class ChessBoard
      */
-    public ChessBoard( int x, int y, int width, int height)
+    public ChessBoard(int x, int y, int width, int height)
     {
         // initialise instance variables
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        Graphics2D g2 = new Graphics2D();
-        int count = 0;
-        for (int i =0; i < num_Squares; i ++)
-        {
-            Rectangle2D.Double square = new Rectangle2D.Double(this.x + (count *25), this.y + (count * 25), this.width, this.height);
-            g2.setColor(Color.blue);
-            g2.draw(square);
-            if(i %2 == 1)
-            {
-                g2.setColor(Color.gray);
-            }
-            count ++;
-        }
     }
 
     /**
@@ -55,6 +43,23 @@ public class ChessBoard extends JPanel
      * @param    y    description of parameter y
      * @return    description of the return value
      */
+    public void draw(Graphics2D g2)
+    {
+        // put your code here
+        int count = 0;
+        for (int i =0; i < 64; i ++)
+        {
+            Rectangle2D.Double square = new Rectangle2D.Double(this.x + (count *25), this.y + (count * 25), this.width, this.height);
+            g2.setColor(Color.blue);
+            g2.draw(square);
+            g2.fill(square);
+            if(i %2 == 1)
+            {
+                g2.setColor(Color.gray);
+            }
+            count ++;
+        }
+    }
+    }
 
 
-}
