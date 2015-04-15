@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=g\ x\ y\ width\ height
+comment0.target=ChessBoard(java.awt.Graphics2D,\ int,\ int,\ int,\ int)
+comment0.text=\r\n\ Default\ constructor\ for\ objects\ of\ class\ ChessBoard\r\n
+numComments=1
