@@ -1,7 +1,8 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 /**
  * Write a description of class BoardViewer here.
  * 
@@ -15,7 +16,6 @@ public class BoardViewer
     private JButton randomColors;
     private JLabel titleLabel;
     private JPanel panel, tools;
-    private ChessBoard board;
     private JFrame frame;
     /**
      * Default constructor for objects of class BoardViewer
@@ -30,6 +30,7 @@ public class BoardViewer
         BoardPanel board = new BoardPanel();
         JPanel panel = new JPanel();
         panel.add(board);
+        frame.add(panel);
         frame.setVisible(true);
     }
 

@@ -43,23 +43,24 @@ public class ChessBoard
      * @param    y    description of parameter y
      * @return    description of the return value
      */
-    public void draw(Graphics2D g2)
+    public void drawBoard(Graphics2D g, int x, int y, int width, int height)
     {
         // put your code here
         int count = 0;
         for (int i =0; i < 64; i ++)
         {
             Rectangle2D.Double square = new Rectangle2D.Double(this.x + (count *25), this.y + (count * 25), this.width, this.height);
-            g2.setColor(Color.blue);
-            g2.draw(square);
-            g2.fill(square);
+            g.setColor(Color.blue);
+            g.draw(square);
+            g.fill(square);
             if(i %2 == 1)
             {
-                g2.setColor(Color.gray);
+                g.setColor(Color.gray);
             }
             count ++;
         }
     }
+
     }
 
 

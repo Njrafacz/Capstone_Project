@@ -2,7 +2,7 @@
 comment0.params=x\ y\ width\ height
 comment0.target=ChessBoard(int,\ int,\ int,\ int)
 comment0.text=\r\n\ Default\ constructor\ for\ objects\ of\ class\ ChessBoard\r\n
-comment1.params=g2
-comment1.target=void\ draw(java.awt.Graphics2D)
+comment1.params=g\ x\ y\ width\ height
+comment1.target=void\ drawBoard(java.awt.Graphics2D,\ int,\ int,\ int,\ int)
 comment1.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \ \ \ that\ describes\ the\ operation\ of\ the\ method\r\n\r\n\ @pre\ \ \ \ \ \ \ \ preconditions\ for\ the\ method\r\n\ \ \ \ \ \ \ \ \ \ \ \ (what\ the\ method\ assumes\ about\ the\ method's\ parameters\ and\ class's\ state)\r\n\ @post\ \ \ \ postconditions\ for\ the\ method\r\n\ \ \ \ \ \ \ \ \ \ \ \ (what\ the\ method\ guarantees\ upon\ completion)\r\n\ @param\ \ \ \ y\ \ \ \ description\ of\ parameter\ y\r\n\ @return\ \ \ \ description\ of\ the\ return\ value\r\n
 numComments=2

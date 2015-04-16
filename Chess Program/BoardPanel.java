@@ -17,7 +17,7 @@ public class BoardPanel extends JPanel
    private final int PANEL_HEIGHT = 1500;
    public BoardPanel()
    {
-       setBackground(Color.gray);
+       setBackground(Color.black);
        setPreferredSize (new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
     }
     /**
@@ -33,8 +33,8 @@ public class BoardPanel extends JPanel
      */
     public void paintBoard(Graphics g)
     {
-        Graphics2D g2 = (Graphics2D) g;
+        super.paintBoard(g);
         ChessBoard board = new ChessBoard(100,100,50,50);
-        board.draw(g2);
+        board.draw(g);
     }
 }
