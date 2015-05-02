@@ -119,7 +119,7 @@ window.setVisible(true);
 /**
      * actionPerformed methods checks and updates the game via mouse clicks. 
      * 
-     * @param  click 
+     * @param  click  Mouse Input used to proceed with the game.
      *  
      */
 public void actionPerformed(ActionEvent click) {
@@ -220,13 +220,13 @@ pnlS.setVisible(true);
 
 
 /**
-     * An example of a method - replace this comment with your own
+     *Displays the game.
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * 
+     *  
      */
-public void showGame() { // Shows the Playing Field
-// *IMPORTANT*- Does not start out brand new (meaning just shows what it had before)
+public void showGame() {
+
 clearPanelS();
 inGame = true;
 pnlS.setLayout(new BorderLayout());
@@ -234,30 +234,20 @@ pnlS.add(pnlPlayingField, BorderLayout.CENTER);
 pnlPlayingField.requestFocus();
 }
 /**
-     * An example of a method - replace this comment with your own
+     * Checks if there are 3 symbols in a row vertically, diagonally, or horizontally.
+     * Then shows a message and disables buttons.
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * 
      */
-public void checkWin() { // checks if there are 3 symbols in a row vertically, diagonally, or horizontally.
-// then shows a message and disables buttons.
+public void checkWin() {
+
 for(int i=0; i<7; i++) {
 if(
 !btnEmpty[winCombo[i][0]].getText().equals("") &&
 btnEmpty[winCombo[i][0]].getText().equals(btnEmpty[winCombo[i][1]].getText()) &&
 // if {1 == 2 && 2 == 3}
 btnEmpty[winCombo[i][1]].getText().equals(btnEmpty[winCombo[i][2]].getText())
-/*
-The way this checks the if someone won is:
-First: it checks if the btnEmpty[x] is not equal to an empty string- x being the array number
-inside the multi-dementional array winCombo[checks inside each of the 7 sets][the first number]
-Secong: it checks if btnEmpty[x] is equal to btnEmpty[y]- x being winCombo[each set][the first number]
-y being winCombo[each set the same as x][the second number] (So basically checks if the first and
-second number in each set is equal to each other)
-Third: it checks if btnEmtpy[y] is eual to btnEmpty[z]- y being the same y as last time and z being
-winCombo[each set as y][the third number]
-Conclusion: So basically it checks if it is equal to the btnEmpty is equal to each set of numbers
-*/
+
 ) {
 win = true;
 wonNumber1 = winCombo[i][0];
@@ -286,14 +276,12 @@ btnEmpty[i].setEnabled(false);
 }
 }
 /**
-     * An example of a method - replace this comment with your own
+     * Removes all the possible panels.
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * 
      */
-public void clearPanelS() { //Removes all the possible panels
-//that pnlS, pnlT, pnlB
-//could have.
+public void clearPanelS() {
+
 pnlS.remove(lblTitle);
 pnlS.remove(pnlT);
 pnlS.remove(pnlB);
