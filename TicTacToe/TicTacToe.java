@@ -1,22 +1,21 @@
-/*
-Title: Tic-Tac-Toe Game
-Created: October 5, 2008
-Last Edited: pending...
-Author: Nrafacz
-Changes:
-See Below...
-*/
+/**
+ * TicTacToe is a GUI where you can play person vs person TicTacToe (for now!!)
+ * 
+ * @author NRafacz 
+ * @version 5-1-15
+ */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.*;
-public class TicTacToe implements ActionListener {
+public class TicTacToe implements ActionListener 
+{
 final String VERSION = "1.0";
 //Setting up ALL the variables
 JFrame window = new JFrame("Tic-Tac-Toe " + VERSION);
 
-JMenuBar mnuMain = new JMenuBar();
+JMenuBar Main = new JMenuBar();
 JMenuItem mnuNewGame = new JMenuItem("New Game"),
 mnuInstruction = new JMenuItem("Instructions"),
 mnuExit = new JMenuItem("Exit"),
@@ -28,10 +27,10 @@ btnBack = new JButton("<--back");
 JButton btnEmpty[] = new JButton[10];
 
 JPanel pnlNewGame = new JPanel(),
-pnlNorth = new JPanel(),
-pnlSouth = new JPanel(),
-pnlTop = new JPanel(),
-pnlBottom = new JPanel(),
+pnlN = new JPanel(),
+pnlS = new JPanel(),
+pnlT = new JPanel(),
+pnlB = new JPanel(),
 pnlPlayingField = new JPanel();
 JLabel lblTitle = new JLabel("Tic-Tac-Toe");
 JTextArea txtMessage = new JTextArea();
@@ -49,8 +48,14 @@ boolean btnEmptyClicked = false;
 String message;
 int turn = 1;
 int wonNumber1 = 1, wonNumber2 = 1, wonNumber3 = 1;
-
-public TicTacToe() { //Setting game properties and layout and sytle...
+/**
+     * Constructor of the TicTacToe class.
+     * 
+     * 
+     * 
+     */
+public TicTacToe() 
+{ //Setting game properties and layout and style...
 //Setting window properties:
 window.setSize(X, Y);
 window.setLocation(450, 260);
@@ -60,24 +65,24 @@ window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 //Setting Panel layouts and properties
 pnlNewGame.setLayout(new GridLayout(2, 1, 2, 10));
-pnlNorth.setLayout(new FlowLayout(FlowLayout.CENTER));
-pnlSouth.setLayout(new FlowLayout(FlowLayout.CENTER));
+pnlN.setLayout(new FlowLayout(FlowLayout.CENTER));
+pnlS.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-pnlNorth.setBackground(new Color(color-20, color-20, color-20));
-pnlSouth.setBackground(new Color(color, color, color));
+pnlN.setBackground(new Color(color-20, color-20, color-20));
+pnlS.setBackground(new Color(color, color, color));
 
-pnlTop.setBackground(new Color(color, color, color));
-pnlBottom.setBackground(new Color(color, color, color));
+pnlT.setBackground(new Color(color, color, color));
+pnlB.setBackground(new Color(color, color, color));
 
-pnlTop.setLayout(new FlowLayout(FlowLayout.CENTER));
-pnlBottom.setLayout(new FlowLayout(FlowLayout.CENTER));
+pnlT.setLayout(new FlowLayout(FlowLayout.CENTER));
+pnlB.setLayout(new FlowLayout(FlowLayout.CENTER));
 pnlNewGame.setBackground(Color.blue);
 
 //Adding menu items to menu bar
-mnuMain.add(mnuNewGame);
-mnuMain.add(mnuInstruction);
-mnuMain.add(mnuAbout);
-mnuMain.add(mnuExit);//---->Menu Bar Complete
+Main.add(mnuNewGame);
+Main.add(mnuInstruction);
+Main.add(mnuAbout);
+Main.add(mnuExit);
 
 //Adding buttons to NewGame panel
 pnlNewGame.add(btn1v1);
@@ -101,17 +106,22 @@ btnEmpty[i].setBackground(new Color(220, 220, 220));
 btnEmpty[i].addActionListener(this);
 pnlPlayingField.add(btnEmpty[i]);
 }
-//Adding everything needed to pnlNorth and pnlSouth
-pnlNorth.add(mnuMain);
-pnlSouth.add(lblTitle);
+//Adding everything needed to pnlN and pnlS
+pnlN.add(Main);
+pnlS.add(lblTitle);
 
 //Adding to window and Showing window
-window.add(pnlNorth, BorderLayout.NORTH);
-window.add(pnlSouth, BorderLayout.CENTER);
+window.add(pnlN, BorderLayout.NORTH);
+window.add(pnlS, BorderLayout.CENTER);
 window.setVisible(true);
 }
 
-//-------------------START OF ACTION PERFORMED CLASS-------------------------//
+/**
+     * actionPerformed methods checks and updates the game via mouse clicks. 
+     * 
+     * @param  click 
+     *  
+     */
 public void actionPerformed(ActionEvent click) {
 Object source = click.getSource();
 for(int i=1; i<=9; i++) {
@@ -131,12 +141,12 @@ checkWin();
 btnEmptyClicked = false;
 }
 if(source == mnuNewGame) {
-clearPanelSouth();
-pnlSouth.setLayout(new GridLayout(2, 1, 2, 5));
-pnlTop.add(pnlNewGame);
-pnlBottom.add(btnBack);
-pnlSouth.add(pnlTop);
-pnlSouth.add(pnlBottom);
+clearPanelS();
+pnlS.setLayout(new GridLayout(2, 1, 2, 5));
+pnlT.add(pnlNewGame);
+pnlB.add(btnBack);
+pnlS.add(pnlT);
+pnlS.add(pnlB);
 
 }
 else if(source == btn1v1) {
@@ -173,7 +183,7 @@ if(option == JOptionPane.YES_OPTION)
 System.exit(0);
 }
 else if(source == mnuInstruction || source == mnuAbout) {
-clearPanelSouth();
+clearPanelS();
 String message = "";
 txtMessage.setBackground(new Color(color, color, color));
 if(source == mnuInstruction) {
@@ -188,41 +198,47 @@ message = "About:\n\n" +
 }
 txtMessage.setEditable(false);
 txtMessage.setText(message);
-pnlSouth.setLayout(new GridLayout(2, 1, 2, 5));
-pnlTop.add(txtMessage);
-pnlBottom.add(btnBack);
-pnlSouth.add(pnlTop);
-pnlSouth.add(pnlBottom);
+pnlS.setLayout(new GridLayout(2, 1, 2, 5));
+pnlT.add(txtMessage);
+pnlB.add(btnBack);
+pnlS.add(pnlT);
+pnlS.add(pnlB);
 }
 else if(source == btnBack) {
 if(inGame)
 showGame();
 else {
-clearPanelSouth();
-pnlSouth.setLayout(new FlowLayout(FlowLayout.CENTER));
-pnlNorth.setVisible(true);
-pnlSouth.add(lblTitle);
+clearPanelS();
+pnlS.setLayout(new FlowLayout(FlowLayout.CENTER));
+pnlN.setVisible(true);
+pnlS.add(lblTitle);
 }
 }
-pnlSouth.setVisible(false);
-pnlSouth.setVisible(true);
+pnlS.setVisible(false);
+pnlS.setVisible(true);
 }
-//-------------------END OF ACTION PERFORMED CLASS-------------------------//
 
-/*
-----------------------------------
-Start of all the other methods. |
-----------------------------------
-*/
+
+/**
+     * An example of a method - replace this comment with your own
+     * 
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y 
+     */
 public void showGame() { // Shows the Playing Field
 // *IMPORTANT*- Does not start out brand new (meaning just shows what it had before)
-clearPanelSouth();
+clearPanelS();
 inGame = true;
-pnlSouth.setLayout(new BorderLayout());
-pnlSouth.add(pnlPlayingField, BorderLayout.CENTER);
+pnlS.setLayout(new BorderLayout());
+pnlS.add(pnlPlayingField, BorderLayout.CENTER);
 pnlPlayingField.requestFocus();
 }
-
+/**
+     * An example of a method - replace this comment with your own
+     * 
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y 
+     */
 public void checkWin() { // checks if there are 3 symbols in a row vertically, diagonally, or horizontally.
 // then shows a message and disables buttons.
 for(int i=0; i<7; i++) {
@@ -269,17 +285,22 @@ btnEmpty[i].setEnabled(false);
 }
 }
 }
-
-public void clearPanelSouth() { //Removes all the possible panels
-//that pnlSouth, pnlTop, pnlBottom
+/**
+     * An example of a method - replace this comment with your own
+     * 
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y 
+     */
+public void clearPanelS() { //Removes all the possible panels
+//that pnlS, pnlT, pnlB
 //could have.
-pnlSouth.remove(lblTitle);
-pnlSouth.remove(pnlTop);
-pnlSouth.remove(pnlBottom);
-pnlSouth.remove(pnlPlayingField);
-pnlTop.remove(pnlNewGame);
-pnlTop.remove(txtMessage);
-pnlBottom.remove(btnBack);
+pnlS.remove(lblTitle);
+pnlS.remove(pnlT);
+pnlS.remove(pnlB);
+pnlS.remove(pnlPlayingField);
+pnlT.remove(pnlNewGame);
+pnlT.remove(txtMessage);
+pnlB.remove(btnBack);
 }
 
 public static void main(String[] args) {
